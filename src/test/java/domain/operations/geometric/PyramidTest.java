@@ -8,7 +8,6 @@ import org.junit.Test;
  */
 public class PyramidTest {
     Pyramid pyramid = new Pyramid(5,5,5);
-        //25*3.14 + 25 * 3.14
     @Test
     public void calculate_pyramid_field_test(){
         Assert.assertEquals(157, pyramid.fieldCalc());
