@@ -40,5 +40,13 @@ public class SimpleOperations {
     public double div() {
         return a / b;
     }
+    
+    public double inv() {
+    	return Math.pow(a,b);
+    }
+    
+    public double sqrt() {
+    	return Math.sqrt(b);
+    }
 
 }
