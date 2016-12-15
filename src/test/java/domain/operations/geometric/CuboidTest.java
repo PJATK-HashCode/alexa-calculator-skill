@@ -7,7 +7,7 @@ import org.junit.Test;
  * Created by Kuba on 2016-12-13.
  */
 public class CuboidTest {
-    Cuboid cuboid = new Cuboid(5,5,5);
+    private Cuboid cuboid = new Cuboid(5,5,5);
     @Test
     public void calculate_cuboid_field_test(){
         Assert.assertEquals(150,cuboid.fieldCalc());

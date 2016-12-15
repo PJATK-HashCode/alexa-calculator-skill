@@ -6,7 +6,7 @@ import org.junit.*;
  */
 public class SphereTest {
 
-    Sphere sphere = new Sphere(5);
+    private Sphere sphere = new Sphere(5);
 
     @Test
     public void calculate_sphere_field_test(){Assert.assertEquals(314,sphere.fieldCalc());}

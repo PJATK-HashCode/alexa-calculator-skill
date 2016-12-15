@@ -8,7 +8,7 @@ import org.junit.Test;
  */
 public class CubeTest {
 
-    Cube cube = new Cube(5);
+    private Cube cube = new Cube(5);
 
     @Test
     public void calculate_cube_field_test(){Assert.assertEquals(150,cube.fieldCalc());}

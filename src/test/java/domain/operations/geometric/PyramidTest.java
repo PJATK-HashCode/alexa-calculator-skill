@@ -7,7 +7,7 @@ import org.junit.Test;
  * Created by Kuba on 2016-12-13.
  */
 public class PyramidTest {
-    Pyramid pyramid = new Pyramid(5,5,5);
+    private Pyramid pyramid = new Pyramid(5,5,5);
     @Test
     public void calculate_pyramid_field_test(){
         Assert.assertEquals(157, pyramid.fieldCalc());
