@@ -8,7 +8,7 @@ import org.junit.Test;
  */
 public class CircleTest {
 
-    Circle circle = new Circle(5);
+    private Circle circle = new Circle(5);
 
     @Test
     public void calculate_cirlce_circuit_test(){Assert.assertEquals(31,circle.circuitCalc());}

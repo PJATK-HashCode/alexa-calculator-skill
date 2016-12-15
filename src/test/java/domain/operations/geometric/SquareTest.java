@@ -6,7 +6,7 @@ import org.junit.*;
  * Created by Kuba on 2016-12-10.
  */
 public class SquareTest {
-    Square square = new Square(5);
+    private Square square = new Square(5);
 
     @Test
     public void calculate_square_field_test(){
