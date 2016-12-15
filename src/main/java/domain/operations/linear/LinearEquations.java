@@ -1,7 +1,5 @@
 package domain.operations.linear;
 
-import static java.lang.Math.sqrt;
-
 public class LinearEquations {
 
     private double x;
@@ -81,31 +79,8 @@ public class LinearEquations {
         this.zero_2 = zero_2;
     }
 
-    //TODO #1 Move CalculateX&Delta&Zero to another class
+    
     public double CalculateX() {
         return x = (result - y) / x_index;
-    }
-
-    public double CalculateDeltaX() {
-        return delta = sqrt(x_index * x_index - 4 * x_sq_index * y);
-
-
-    }
-
-
-    //TODO #2 Make Zero() return double
-    public void Zero() {
-
-        if (delta > 0) {
-            zero_1 = (-1 * x_index - delta) / (2 * x_sq_index);
-            zero_2 = (-1 * x_index + delta) / (2 * x_sq_index);
-
-        }
-        if (delta == 0) {
-            zero_2 = (-1 * x_index) / (2 * x_sq_index);
-        } else {
-
-            System.out.println("Error");
-        }
     }
 }
