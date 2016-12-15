@@ -43,9 +43,13 @@ public class CalculatorSpeechlet implements Speechlet {
             outputSpeech.setText("GoodBye");
             return SpeechletResponse.newTellResponse(outputSpeech);
         }
+        else if("Multiply".equals(intentName)){
+
+        }
         else{
             throw new SpeechletException("Invalid intent");
         }
+        return null;
     }
 
     @Override
@@ -70,5 +74,6 @@ public class CalculatorSpeechlet implements Speechlet {
 
         return SpeechletResponse.newTellResponse(speech, card);
     }
+
 
 }
