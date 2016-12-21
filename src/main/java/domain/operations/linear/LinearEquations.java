@@ -1,5 +1,7 @@
 package domain.operations.linear;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class LinearEquations {
 
     private double x;
@@ -83,4 +85,9 @@ public class LinearEquations {
     public double CalculateX() {
         return x = (result - y) / x_index;
     }
+    
+    String xString = String.valueOf(x);
+    
+    double xDouble = (StringUtils.isNumeric(xString)) ? Double
+            .parseDouble(xString) : null;
 }
