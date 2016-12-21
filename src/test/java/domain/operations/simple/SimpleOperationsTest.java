@@ -34,7 +34,7 @@ public class SimpleOperationsTest {
     }
     
     @Test
-    public void testSubstract() {
+    public void testSubtract() {
 
         assertEquals(-2.0, simpleOperations.sub(), 0.1);
     }
