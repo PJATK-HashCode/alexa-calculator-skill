@@ -5,6 +5,7 @@ import com.amazon.speech.speechlet.*;
 import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SimpleCard;
+import domain.operations.simple.SimpleOperations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +44,7 @@ public class CalculatorSpeechlet implements Speechlet {
             outputSpeech.setText("GoodBye");
             return SpeechletResponse.newTellResponse(outputSpeech);
         }
-        else if("Multiply".equals(intentName)){
+        else if("Simple".equals(intentName)){
 
         }
         else{
@@ -74,6 +75,15 @@ public class CalculatorSpeechlet implements Speechlet {
 
         return SpeechletResponse.newTellResponse(speech, card);
     }
+
+
+    private void simpleOperation (IntentRequest intentRequest, Session session) throws SpeechletException {
+
+        SimpleOperations simpleOperations = new SimpleOperations();
+        simpleOperations.add();
+
+    }
+
 
 
 }
