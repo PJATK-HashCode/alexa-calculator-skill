@@ -1,11 +1,13 @@
 package speechlet;
 
 import com.amazon.speech.slu.Intent;
+import com.amazon.speech.slu.Slot;
 import com.amazon.speech.speechlet.*;
 import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SimpleCard;
 import domain.operations.simple.SimpleOperations;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +47,7 @@ public class CalculatorSpeechlet implements Speechlet {
             return SpeechletResponse.newTellResponse(outputSpeech);
         }
         else if("Simple".equals(intentName)){
-
+            simpleOperations(intentRequest,session);
         }
         else{
             throw new SpeechletException("Invalid intent");
@@ -76,14 +78,48 @@ public class CalculatorSpeechlet implements Speechlet {
         return SpeechletResponse.newTellResponse(speech, card);
     }
 
+    private SpeechletResponse simpleOperations(IntentRequest intentRequest, Session session) throws SpeechletException{
+        log.info("onIntent requestId={}, sessionId={}", intentRequest.getRequestId(), session.getSessionId());
 
-    private void simpleOperation (IntentRequest intentRequest, Session session) throws SpeechletException {
-
+        Intent intent = intentRequest.getIntent();
         SimpleOperations simpleOperations = new SimpleOperations();
-        simpleOperations.add();
+        String intentName = (intent != null) ? intent.getName() : null;
+
+        Slot xValue = intent.getSlot("Amazon.NUMBER");
+        Slot yValue = intent.getSlot("Amazon.NUMBER");
+
+        SimpleCard card = new SimpleCard();
+        card.setTitle("Hello");
+
+        if (xValue != null && yValue != null) {
+            // Get the values from the slots. Slot values are always provided as
+            // strings
+            String xString = xValue.getValue();
+            String yString = yValue.getValue();
+
+            Integer xInt = (StringUtils.isNumeric(xString)) ? Integer
+                    .parseInt(xString) : null;
+            Integer yInt = (StringUtils.isNumeric(yString)) ? Integer
+                    .parseInt(yString) : null;
+
+            if (xInt != null && yInt != null) {
+
+                simpleOperations.setA(xInt);
+                simpleOperations.setB(xInt);
+                if("substract".equals(intentName)){
+                    PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
+                    outputSpeech.setText(String.valueOf(simpleOperations.sub()));
+                    return SpeechletResponse.newTellResponse(outputSpeech, card);
+
+                }
+            }
+        }
+        return null;
+    }
+
 
     }
 
 
 
-}
+
