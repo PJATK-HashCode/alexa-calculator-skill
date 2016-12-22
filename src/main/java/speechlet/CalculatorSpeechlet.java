@@ -66,7 +66,7 @@ public class CalculatorSpeechlet implements Speechlet {
         String speechText = "Welcome to the Calculator Skill";
 
         SimpleCard card = new SimpleCard();
-        card.setTitle("Hello");
+        card.setTitle("WelcomeResponse");
         card.setContent(speechText);
 
         PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
@@ -85,8 +85,8 @@ public class CalculatorSpeechlet implements Speechlet {
         SimpleOperations simpleOperations = new SimpleOperations();
         String intentName = (intent != null) ? intent.getName() : null;
 
-        Slot xValue = intent.getSlot("Amazon.NUMBER");
-        Slot yValue = intent.getSlot("Amazon.NUMBER");
+        Slot xValue = intent.getSlot("xValue");
+        Slot yValue = intent.getSlot("yValue");
 
         SimpleCard card = new SimpleCard();
         card.setTitle("Hello");
@@ -105,7 +105,7 @@ public class CalculatorSpeechlet implements Speechlet {
             if (xInt != null && yInt != null) {
 
                 simpleOperations.setA(xInt);
-                simpleOperations.setB(xInt);
+                simpleOperations.setB(yInt);
                 if("substract".equals(intentName)){
                     PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
                     outputSpeech.setText(String.valueOf(simpleOperations.sub()));
