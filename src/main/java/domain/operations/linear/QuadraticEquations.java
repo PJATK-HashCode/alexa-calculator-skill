@@ -25,7 +25,7 @@ public class QuadraticEquations {
     }
 
 
-    protected double calculateDelta() {
+    public double calculateDelta() {
         return pow(b, 2) - (4 * a * c);
     }
 
