@@ -9,16 +9,9 @@ public class SimpleOperations {
     public SimpleOperations() {
     }
 
-    public double getA() {
-        return a;
-    }
 
     public void setA(double a) {
         this.a = a;
-    }
-
-    public double getB() {
-        return b;
     }
 
     public void setB(double b) {
@@ -26,7 +19,7 @@ public class SimpleOperations {
     }
 
     public double add() {
-        return a+b;
+        return a + b;
     }
 
     public double sub() {
@@ -40,10 +33,10 @@ public class SimpleOperations {
     public double div() {
         return a / b;
     }
-    
+
     public double inv() {
-    	return Math.pow(a,b);
+        return Math.pow(a, b);
     }
-    
+
 
 }
