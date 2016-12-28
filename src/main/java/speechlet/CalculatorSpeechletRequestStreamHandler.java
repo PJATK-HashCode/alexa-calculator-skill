@@ -14,7 +14,7 @@ public class CalculatorSpeechletRequestStreamHandler extends SpeechletRequestStr
 
     static {
         supportedApplicationIds = new HashSet<String>();
-        supportedApplicationIds.add("amzn1.echo-sdk-ams.app.[amzn1.ask.skill.c0da1d99-24fb-446e-94c0-e1cbfa2e1a48]");
+        supportedApplicationIds.add("amzn1.ask.skill.c0da1d99-24fb-446e-94c0-e1cbfa2e1a48");
 
     }
 

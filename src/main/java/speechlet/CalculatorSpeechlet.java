@@ -48,7 +48,7 @@ public class CalculatorSpeechlet implements Speechlet {
             PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
             outputSpeech.setText("GoodBye");
             return SpeechletResponse.newTellResponse(outputSpeech);
-        } else if ("SimpleOperations".equals(intentName)) {
+        } else if ("SimpleOperation".equals(intentName)) {
             final Map<String, Slot> map = intent.getSlots();
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("operation")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
