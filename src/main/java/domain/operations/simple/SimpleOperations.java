@@ -45,8 +45,5 @@ public class SimpleOperations {
     	return Math.pow(a,b);
     }
     
-    public double sqrt() {
-    	return Math.sqrt(b);
-    }
 
 }

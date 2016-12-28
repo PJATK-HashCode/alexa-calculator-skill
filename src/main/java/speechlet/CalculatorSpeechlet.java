@@ -7,9 +7,10 @@ import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SimpleCard;
 import domain.operations.simple.SimpleOperations;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 /**
  * @author L on 08.12.2016.
@@ -37,22 +38,30 @@ public class CalculatorSpeechlet implements Speechlet {
         log.info("onIntent requestId={}, sessionId={}", intentRequest.getRequestId(), session.getSessionId());
 
         Intent intent = intentRequest.getIntent();
+        SpeechletResponse response = new SpeechletResponse();
+        PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
         String intentName = (intent != null) ? intent.getName() : null;
 
         //TODO implementation of calculator methods
-        if("HashCodeCalculator".equals(intentName))return getWelcomeResponse();
-        else if("AMAZON.StopIntent".equals(intentName)){
+        if ("HashCodeCalculator".equals(intentName)) return getWelcomeResponse();
+        else if ("AMAZON.StopIntent".equals(intentName)) {
             PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
             outputSpeech.setText("GoodBye");
             return SpeechletResponse.newTellResponse(outputSpeech);
-        }
-        else if("Simple".equals(intentName)){
-            simpleOperations(intentRequest,session);
-        }
-        else{
+        } else if ("SimpleOperations".equals(intentName)) {
+            final Map<String, Slot> map = intent.getSlots();
+            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("operation")) {
+                int x = Integer.valueOf(map.get("xValue").getValue());
+                int y = Integer.valueOf(map.get("yValue").getValue());
+                speech.setText(simpleOperations(x, y, map.get("operation").getValue()));
+            }
+        } else {
             throw new SpeechletException("Invalid intent");
         }
-        return null;
+
+        response.setOutputSpeech(speech);
+        response.setShouldEndSession(true);
+        return response;
     }
 
     @Override
@@ -78,47 +87,29 @@ public class CalculatorSpeechlet implements Speechlet {
         return SpeechletResponse.newTellResponse(speech, card);
     }
 
-    private SpeechletResponse simpleOperations(IntentRequest intentRequest, Session session) throws SpeechletException{
-        log.info("onIntent requestId={}, sessionId={}", intentRequest.getRequestId(), session.getSessionId());
+    private String simpleOperations(int number1, int number2, String operator) {
 
-        Intent intent = intentRequest.getIntent();
         SimpleOperations simpleOperations = new SimpleOperations();
-        String intentName = (intent != null) ? intent.getName() : null;
+        simpleOperations.setA(number1);
+        simpleOperations.setB(number2);
 
-        Slot xValue = intent.getSlot("xValue");
-        Slot yValue = intent.getSlot("yValue");
+        if ("add".equals(operator)) {
 
-        SimpleCard card = new SimpleCard();
-        card.setTitle("Hello");
-
-        if (xValue != null && yValue != null) {
-            // Get the values from the slots. Slot values are always provided as
-            // strings
-            String xString = xValue.getValue();
-            String yString = yValue.getValue();
-
-            Integer xInt = (StringUtils.isNumeric(xString)) ? Integer
-                    .parseInt(xString) : null;
-            Integer yInt = (StringUtils.isNumeric(yString)) ? Integer
-                    .parseInt(yString) : null;
-
-            if (xInt != null && yInt != null) {
-
-                simpleOperations.setA(xInt);
-                simpleOperations.setB(yInt);
-                if("substract".equals(intentName)){
-                    PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
-                    outputSpeech.setText(String.valueOf(simpleOperations.sub()));
-                    return SpeechletResponse.newTellResponse(outputSpeech, card);
-
-                }
-            }
+            return String.valueOf(simpleOperations.add());
+        } else if ("sublimate".equals(operator)) {
+            return String.valueOf(simpleOperations.sub());
+        } else if ("multiply".equals(operator)) {
+            return String.valueOf(simpleOperations.mul());
+        } else if ("divide".equals(operator)) {
+            return String.valueOf(simpleOperations.div());
+        } else if ("exponentiation".equals(operator)) {
+            return String.valueOf(simpleOperations.inv());
         }
-        return null;
+
+        return "Sorry, I don't understand your request. Please repeat.";
     }
 
-
-    }
+}
 
 
 

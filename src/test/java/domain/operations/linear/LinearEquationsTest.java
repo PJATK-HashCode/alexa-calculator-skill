@@ -1,7 +1,6 @@
 package domain.operations.linear;
 
-import domain.operations.linear.LinearEquations;
-import org.junit.Test;
+import org.junit.Before;
 
 public class LinearEquationsTest {
 
