@@ -78,7 +78,7 @@ public class CalculatorSpeechlet implements Speechlet {
 
         } else if ("QuadraticEquation".equals(intentName)) {
             if (map.containsKey("xValue") && map.containsKey("yValue")
-                    && map.containsKey("zValue") && map.containsKey("operation")) {
+                    && map.containsKey("zValue") && map.containsKey("kind")) {
 
                 int a = Integer.valueOf(map.get("xValue").getValue());
                 int b = Integer.valueOf(map.get("yValue").getValue());
