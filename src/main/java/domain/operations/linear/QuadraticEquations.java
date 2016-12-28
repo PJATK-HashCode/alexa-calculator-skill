@@ -25,7 +25,8 @@ public class QuadraticEquations {
     }
 
 
-    protected double calculateDelta() {
+    public double calculateDelta() {
+
         return pow(b, 2) - (4 * a * c);
     }
 
@@ -41,6 +42,11 @@ public class QuadraticEquations {
     }
 
     public String results() {
-        return "First zero point for x equals " + calculateFirstZeroPoint() + " and second zero point equals " + calculateSecondZeroPoint();
+
+        if (calculateDelta() < 0) {
+            return "Delta is negative. The equation does not have solutions ";
+        } else
+            return "First zero point for x equals " + String.valueOf(calculateFirstZeroPoint())
+                    + " and second zero point equals " + String.valueOf(calculateSecondZeroPoint());
     }
 }
