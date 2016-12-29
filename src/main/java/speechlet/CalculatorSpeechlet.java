@@ -7,8 +7,6 @@ import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SimpleCard;
 import domain.operations.linear.LinearEquations;
-import domain.operations.linear.QuadraticEquations;
-import domain.operations.simple.SimpleOperations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,6 +39,7 @@ public class CalculatorSpeechlet implements Speechlet {
 
         SpeechletResponse response = new SpeechletResponse();
         PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
+        OperationsHandler operationsHandler = new OperationsHandler();
 
         Intent intent = intentRequest.getIntent();
         final Map<String, Slot> map = intent.getSlots();
@@ -61,10 +60,12 @@ public class CalculatorSpeechlet implements Speechlet {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
 
-                speech.setText(simpleOperations(x, y, map.get("operation").getValue()));
+                speech.setText(operationsHandler.simpleOperations(x, y, map.get("operation").getValue()));
             }
         } else if ("LinearEquation".equals(intentName)) {
+
             LinearEquations linearEquations = new LinearEquations();
+
             if (map.containsKey("xValue") && map.containsKey("yValue")) {
 
                 int x = Integer.valueOf(map.get("xValue").getValue());
@@ -77,6 +78,7 @@ public class CalculatorSpeechlet implements Speechlet {
             }
 
         } else if ("QuadraticEquation".equals(intentName)) {
+
             if (map.containsKey("xValue") && map.containsKey("yValue")
                     && map.containsKey("zValue") && map.containsKey("kind")) {
 
@@ -84,7 +86,7 @@ public class CalculatorSpeechlet implements Speechlet {
                 int b = Integer.valueOf(map.get("yValue").getValue());
                 int c = Integer.valueOf(map.get("zValue").getValue());
 
-                speech.setText(quadraticEquations(a, b, c, map.get("kind").getValue()));
+                speech.setText(operationsHandler.quadraticOperations(a, b, c, map.get("kind").getValue()));
             }
         } else {
             throw new SpeechletException("Invalid intent");
@@ -118,43 +120,7 @@ public class CalculatorSpeechlet implements Speechlet {
         return SpeechletResponse.newTellResponse(speech, card);
     }
 
-    private String simpleOperations(int number1, int number2, String operator) {
 
-        SimpleOperations simpleOperations = new SimpleOperations();
-        simpleOperations.setA(number1);
-        simpleOperations.setB(number2);
-
-        if ("add".equals(operator)) {
-
-            return String.valueOf(simpleOperations.add());
-        } else if ("sublimate".equals(operator)) {
-            return String.valueOf(simpleOperations.sub());
-        } else if ("multiply".equals(operator)) {
-            return String.valueOf(simpleOperations.mul());
-        } else if ("divide".equals(operator)) {
-            return String.valueOf(simpleOperations.div());
-        } else if ("exponentiation".equals(operator)) {
-            return String.valueOf(simpleOperations.inv());
-        }
-
-        return "Sorry, I don't understand your request. Please repeat.";
-    }
-
-    private String quadraticEquations(int number1, int number2, int number3, String operator) {
-
-        QuadraticEquations quadraticEquations = new QuadraticEquations();
-        quadraticEquations.setA(number1);
-        quadraticEquations.setB(number2);
-        quadraticEquations.setC(number3);
-
-        if ("delta".equals(operator)) {
-            return String.valueOf(quadraticEquations.calculateDelta());
-        } else if ("zeroPoints".equals(operator)) {
-            return quadraticEquations.results();
-        }
-        return "Sorry, I don't understand your request. Please repeat.";
-
-    }
 
 }
 
