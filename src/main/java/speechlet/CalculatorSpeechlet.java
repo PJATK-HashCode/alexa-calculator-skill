@@ -9,6 +9,8 @@ import com.amazon.speech.ui.SimpleCard;
 import domain.operations.linear.LinearEquations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import speechlet.handler.IOperationsHandler;
+
 
 import java.util.Map;
 
@@ -18,7 +20,7 @@ import java.util.Map;
 public class CalculatorSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(CalculatorSpeechlet.class);
-
+    IOperationsHandler operationsHandler;
     @Override
     public void onSessionStarted(SessionStartedRequest sessionStartedRequest, Session session) throws SpeechletException {
         log.info("onSessionStarted requestId={}, sessionId={}", sessionStartedRequest.getRequestId(),
@@ -39,7 +41,6 @@ public class CalculatorSpeechlet implements Speechlet {
 
         SpeechletResponse response = new SpeechletResponse();
         PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
-        OperationsHandler operationsHandler = new OperationsHandler();
 
         Intent intent = intentRequest.getIntent();
         final Map<String, Slot> map = intent.getSlots();
@@ -55,12 +56,12 @@ public class CalculatorSpeechlet implements Speechlet {
             return SpeechletResponse.newTellResponse(outputSpeech);
 
         } else if ("SimpleOperation".equals(intentName)) {
-            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("operation")) {
+            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("simpleOperations")) {
 
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
 
-                speech.setText(operationsHandler.simpleOperations(x, y, map.get("operation").getValue()));
+                speech.setText(operationsHandler.simpleOperations().operator(x, y, map.get("simpleOperations").getValue()));
             }
         } else if ("LinearEquation".equals(intentName)) {
 
@@ -86,7 +87,7 @@ public class CalculatorSpeechlet implements Speechlet {
                 int b = Integer.valueOf(map.get("yValue").getValue());
                 int c = Integer.valueOf(map.get("zValue").getValue());
 
-                speech.setText(operationsHandler.quadraticOperations(a, b, c, map.get("kind").getValue()));
+                speech.setText(operationsHandler.quadraticOperations().operator(a, b, c, map.get("kind").getValue()));
             }
         } else {
             throw new SpeechletException("Invalid intent");
