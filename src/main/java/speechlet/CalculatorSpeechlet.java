@@ -56,12 +56,12 @@ public class CalculatorSpeechlet implements Speechlet {
             return SpeechletResponse.newTellResponse(outputSpeech);
 
         } else if ("SimpleOperation".equals(intentName)) {
-            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("simpleOperations")) {
+            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("operation")) {
 
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
 
-                speech.setText(operationsHandler.simpleOperations().operator(x, y, map.get("simpleOperations").getValue()));
+                speech.setText(operationsHandler.simpleOperations().operator(x, y, map.get("operation").getValue()));
             }
         } else if ("LinearEquation".equals(intentName)) {
 
