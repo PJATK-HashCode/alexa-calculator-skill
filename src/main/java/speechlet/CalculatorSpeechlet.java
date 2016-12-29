@@ -20,7 +20,7 @@ import java.util.Map;
 public class CalculatorSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(CalculatorSpeechlet.class);
-    IOperationsHandler operationsHandler;
+    private IOperationsHandler operationsHandler;
     @Override
     public void onSessionStarted(SessionStartedRequest sessionStartedRequest, Session session) throws SpeechletException {
         log.info("onSessionStarted requestId={}, sessionId={}", sessionStartedRequest.getRequestId(),
