@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import speechlet.handler.IOperationsHandler;
 
-
 import java.util.Map;
 
 /**
@@ -21,6 +20,7 @@ public class CalculatorSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(CalculatorSpeechlet.class);
     private IOperationsHandler operationsHandler;
+
     @Override
     public void onSessionStarted(SessionStartedRequest sessionStartedRequest, Session session) throws SpeechletException {
         log.info("onSessionStarted requestId={}, sessionId={}", sessionStartedRequest.getRequestId(),
@@ -120,7 +120,6 @@ public class CalculatorSpeechlet implements Speechlet {
 
         return SpeechletResponse.newTellResponse(speech, card);
     }
-
 
 
 }

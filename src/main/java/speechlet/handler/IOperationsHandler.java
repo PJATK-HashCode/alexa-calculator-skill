@@ -8,5 +8,6 @@ import speechlet.handler.simple.ISimpleOperationsHandler;
  */
 public interface IOperationsHandler {
     ISimpleOperationsHandler simpleOperations();
+
     IQuadraticOperationsHandler quadraticOperations();
 }

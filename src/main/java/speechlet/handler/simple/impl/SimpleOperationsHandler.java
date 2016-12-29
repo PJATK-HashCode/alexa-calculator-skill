@@ -9,9 +9,6 @@ import static speechlet.handler.OperationsHandler.WRONG_REQUEST;
  * Created by Kuba on 2016-12-29.
  */
 public class SimpleOperationsHandler implements ISimpleOperationsHandler {
-    private int number1;
-    private int number2;
-    private String operator;
 
 
     @Override
