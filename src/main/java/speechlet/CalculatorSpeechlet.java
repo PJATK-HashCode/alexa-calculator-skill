@@ -10,6 +10,9 @@ import domain.operations.linear.LinearEquations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import speechlet.handler.IOperationsHandler;
+import speechlet.handler.OperationsHandler;
+import speechlet.handler.linear.IQuadraticOperationsHandler;
+import speechlet.handler.simple.ISimpleOperationsHandler;
 
 import java.util.Map;
 
@@ -20,6 +23,7 @@ public class CalculatorSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(CalculatorSpeechlet.class);
     private IOperationsHandler operationsHandler;
+
 
     @Override
     public void onSessionStarted(SessionStartedRequest sessionStartedRequest, Session session) throws SpeechletException {
@@ -56,6 +60,14 @@ public class CalculatorSpeechlet implements Speechlet {
             return SpeechletResponse.newTellResponse(outputSpeech);
 
         } else if ("SimpleOperation".equals(intentName)) {
+
+            operationsHandler = new OperationsHandler() {
+                @Override
+                public ISimpleOperationsHandler simpleOperations() {
+                    return super.simpleOperations();
+                }
+            };
+
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("operation")) {
 
                 int x = Integer.valueOf(map.get("xValue").getValue());
@@ -79,6 +91,13 @@ public class CalculatorSpeechlet implements Speechlet {
             }
 
         } else if ("QuadraticEquation".equals(intentName)) {
+
+            operationsHandler = new OperationsHandler() {
+                @Override
+                public IQuadraticOperationsHandler quadraticOperations() {
+                    return super.quadraticOperations();
+                }
+            };
 
             if (map.containsKey("xValue") && map.containsKey("yValue")
                     && map.containsKey("zValue") && map.containsKey("kind")) {
