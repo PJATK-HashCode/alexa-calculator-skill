@@ -24,6 +24,6 @@ public class LinearEquations {
         if (a != 0) {
             return b / a;
         }
-        return Double.parseDouble("Wrong number");
+        return Double.parseDouble("First number cant equals zero. Your request has no solutions");
     }
 }

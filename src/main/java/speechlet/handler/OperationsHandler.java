@@ -10,7 +10,7 @@ import speechlet.handler.simple.impl.SimpleOperationsHandler;
  */
 public abstract class OperationsHandler implements IOperationsHandler {
 
-    public final static String WRONG_REQUEST = "Sorry, I don't understand your request. Please repeat.";
+    public final static String WRONG_REQUEST = "Sorry, I don't understand your request. Please repeat it.";
 
     public ISimpleOperationsHandler simpleOperations() {
         return new SimpleOperationsHandler();
