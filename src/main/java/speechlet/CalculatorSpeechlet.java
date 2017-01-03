@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import speechlet.handler.IOperationsHandler;
 import speechlet.handler.OperationsHandler;
 import speechlet.handler.linear.IQuadraticOperationsHandler;
-import speechlet.handler.simple.ISimpleOperationsHandler;
 
 import java.util.Map;
 
@@ -60,13 +59,6 @@ public class CalculatorSpeechlet implements Speechlet {
             return SpeechletResponse.newTellResponse(outputSpeech);
 
         } else if ("SimpleOperation".equals(intentName)) {
-
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public ISimpleOperationsHandler simpleOperations() {
-                    return super.simpleOperations();
-                }
-            };
 
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("operation")) {
 
@@ -125,7 +117,7 @@ public class CalculatorSpeechlet implements Speechlet {
 
     private SpeechletResponse getWelcomeResponse() {
 
-        String speechText = "Welcome to the Calculator Skill";
+        String speechText = "Welcome to the Calculator Skill. What do you want to do?";
 
         SimpleCard card = new SimpleCard();
         card.setTitle("WelcomeResponse");
@@ -139,6 +131,7 @@ public class CalculatorSpeechlet implements Speechlet {
 
         return SpeechletResponse.newTellResponse(speech, card);
     }
+
 
 
 }
