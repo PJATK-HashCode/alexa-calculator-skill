@@ -1,5 +1,7 @@
 package speechlet.handler;
 
+import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
+import speechlet.handler.geometric.IGeometricOperationsThreeVariableHandler;
 import speechlet.handler.linear.IQuadraticOperationsHandler;
 import speechlet.handler.simple.ISimpleOperationsHandler;
 
@@ -8,6 +10,8 @@ import speechlet.handler.simple.ISimpleOperationsHandler;
  */
 public interface IOperationsHandler {
     ISimpleOperationsHandler simpleOperations();
-
+    IGeometricOperationsSingleVariableHandler circleOperations();
     IQuadraticOperationsHandler quadraticOperations();
+    IGeometricOperationsSingleVariableHandler cubeOperations();
+    IGeometricOperationsThreeVariableHandler triangleOperations();
 }

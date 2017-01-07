@@ -100,7 +100,26 @@ public class CalculatorSpeechlet implements Speechlet {
 
                 speech.setText(operationsHandler.quadraticOperations().operator(a, b, c, map.get("kind").getValue()));
             }
-        } else {
+        }  else if ("CircleOperation".equals(intentName)){
+            if (map.containsKey("xValue")){
+                int X = Integer.valueOf(map.get("xValue").getValue());
+                speech.setText(operationsHandler.circleOperations().operator(X,map.get("operation").getValue()));
+            }
+        } else if ("CubeOperation".equals(intentName)){
+            if(map.containsKey("xValue")){
+                int X = Integer.valueOf(map.get("xValue").getValue());
+                speech.setText(operationsHandler.cubeOperations().operator(X,map.get("operation").getValue()));
+            }
+        } else if("TriangleOperation".equals(intentName)){
+            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")){
+                int x = Integer.valueOf(map.get("xValue").getValue());
+                int y = Integer.valueOf(map.get("yValue").getValue());
+                int z =  Integer.valueOf(map.get("zValue").getValue());
+                speech.setText(operationsHandler.triangleOperations().operator(x,y,z,map.get("operation").getValue()));
+            }
+        }
+
+        else {
             throw new SpeechletException("Invalid intent");
         }
 
