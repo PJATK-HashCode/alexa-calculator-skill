@@ -1,6 +1,5 @@
 package speechlet.handler.geometric.impl;
 
-import domain.operations.geometric.Circle;
 import domain.operations.geometric.Cube;
 import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
 
@@ -14,10 +13,9 @@ public class CubeHandler implements IGeometricOperationsSingleVariableHandler {
     public String operator(int X, String operator) {
         Cube cube = new Cube(X);
 
-        if("field".equals(operator)){
+        if ("field".equals(operator)) {
             return String.valueOf(cube.fieldCalc());
-        }
-        else if ("volume".equals(operator)){
+        } else if ("volume".equals(operator)) {
             return String.valueOf(cube.volumeCalc());
         }
         return WRONG_REQUEST;
