@@ -10,8 +10,12 @@ import speechlet.handler.simple.ISimpleOperationsHandler;
  */
 public interface IOperationsHandler {
     ISimpleOperationsHandler simpleOperations();
+
     IGeometricOperationsSingleVariableHandler circleOperations();
+
     IQuadraticOperationsHandler quadraticOperations();
+
     IGeometricOperationsSingleVariableHandler cubeOperations();
+
     IGeometricOperationsThreeVariableHandler triangleOperations();
 }

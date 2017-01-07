@@ -13,10 +13,9 @@ public class CircleHandler implements IGeometricOperationsSingleVariableHandler 
     public String operator(int X, String operator) {
         Circle circle = new Circle(X);
 
-        if("field".equals(operator)){
+        if ("field".equals(operator)) {
             return String.valueOf(circle.fieldCalc());
-        }
-        else if ("circuit".equals(operator)){
+        } else if ("circuit".equals(operator)) {
             return String.valueOf(circle.circuitCalc());
         }
         return WRONG_REQUEST;

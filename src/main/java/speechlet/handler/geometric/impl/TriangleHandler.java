@@ -11,11 +11,10 @@ import static speechlet.handler.OperationsHandler.WRONG_REQUEST;
 public class TriangleHandler implements IGeometricOperationsThreeVariableHandler {
     @Override
     public String operator(int X, int Y, int Z, String operator) {
-        Triangle triangle = new Triangle(X,Y,Z);
-        if ("field".equals(operator)){
+        Triangle triangle = new Triangle(X, Y, Z);
+        if ("field".equals(operator)) {
             return String.valueOf(triangle.fieldCalc());
-        }
-        else if ("circuit".equals(operator)){
+        } else if ("circuit".equals(operator)) {
             return String.valueOf(triangle.circuitCalc());
         }
         return WRONG_REQUEST;
