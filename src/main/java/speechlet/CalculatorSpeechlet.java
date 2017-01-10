@@ -13,6 +13,7 @@ import speechlet.handler.IOperationsHandler;
 import speechlet.handler.OperationsHandler;
 import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
 import speechlet.handler.geometric.IGeometricOperationsThreeVariableHandler;
+import speechlet.handler.geometric.IGeometricOperationsTwoVariableHandler;
 import speechlet.handler.linear.IQuadraticOperationsHandler;
 import speechlet.handler.simple.ISimpleOperationsHandler;
 
@@ -148,7 +149,75 @@ public class CalculatorSpeechlet implements Speechlet {
                 int z = Integer.valueOf(map.get("zValue").getValue());
                 speech.setText(operationsHandler.triangleOperations().operator(x, y, z, map.get("TriangleOp").getValue()));
             }
-        } else {
+        } else if ("CuboidOperation".equals(intentName)) {
+            operationsHandler = new OperationsHandler() {
+                @Override
+                public IGeometricOperationsThreeVariableHandler cuboidOperations() {
+                    return super.cuboidOperations();
+                }
+            };
+            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
+                int x = Integer.valueOf(map.get("xValue").getValue());
+                int y = Integer.valueOf(map.get("yValue").getValue());
+                int z = Integer.valueOf(map.get("zValue").getValue());
+                speech.setText(operationsHandler.cuboidOperations().operator(x, y, z, map.get("CuboidOp").getValue()));
+            }
+        }
+        else if ("PyramidHandler".equals(intentName)){
+                operationsHandler = new OperationsHandler() {
+                    @Override
+                    public IGeometricOperationsThreeVariableHandler pyramidOperations() {
+                        return super.pyramidOperations();
+                    }
+                };
+            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
+                int x = Integer.valueOf(map.get("xValue").getValue());
+                int y = Integer.valueOf(map.get("yValue").getValue());
+                int z = Integer.valueOf(map.get("zValue").getValue());
+                speech.setText(operationsHandler.pyramidOperations().operator(x, y, z, map.get("PyramidOp").getValue()));
+            }
+            }
+        else if ("RectangleHandler".equals(intentName)){
+            operationsHandler = new OperationsHandler() {
+                @Override
+                public IGeometricOperationsTwoVariableHandler rectangleOperations() {
+                    return super.rectangleOperations();
+                }
+            };
+            if (map.containsKey("xValue") && map.containsKey("yValue")) {
+                int x = Integer.valueOf(map.get("xValue").getValue());
+                int y = Integer.valueOf(map.get("yValue").getValue());
+                speech.setText(operationsHandler.rectangleOperations().operator(x, y, map.get("RectangleOp").getValue()));
+            }
+        }
+        else if ("SphereHandler".equals(intentName)){
+            operationsHandler = new OperationsHandler() {
+                @Override
+                public IGeometricOperationsSingleVariableHandler sphereOperations() {
+                    return super.sphereOperations();
+                }
+            };
+            if (map.containsKey("xValue")) {
+                int x = Integer.valueOf(map.get("xValue").getValue());
+                speech.setText(operationsHandler.sphereOperations().operator(x, map.get("SphereOp").getValue()));
+            }
+        }
+        else if ("SquareHandler".equals(intentName)){
+            operationsHandler = new OperationsHandler() {
+                @Override
+                public IGeometricOperationsSingleVariableHandler squareOperations() {
+                    return super.squareOperations();
+                }
+            };
+            if (map.containsKey("xValue")) {
+                int x = Integer.valueOf(map.get("xValue").getValue());
+                speech.setText(operationsHandler.squareOperations().operator(x, map.get("SquareOp").getValue()));
+            }
+
+        }
+
+
+        else {
             throw new SpeechletException("Invalid intent");
         }
 
