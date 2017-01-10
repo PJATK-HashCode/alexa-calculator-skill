@@ -2,9 +2,8 @@ package speechlet.handler;
 
 import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
 import speechlet.handler.geometric.IGeometricOperationsThreeVariableHandler;
-import speechlet.handler.geometric.impl.CircleHandler;
-import speechlet.handler.geometric.impl.CubeHandler;
-import speechlet.handler.geometric.impl.TriangleHandler;
+import speechlet.handler.geometric.IGeometricOperationsTwoVariableHandler;
+import speechlet.handler.geometric.impl.*;
 import speechlet.handler.linear.IQuadraticOperationsHandler;
 import speechlet.handler.linear.impl.QuadraticOperationsHandler;
 import speechlet.handler.simple.ISimpleOperationsHandler;
@@ -37,6 +36,32 @@ public abstract class OperationsHandler implements IOperationsHandler {
     }
 
     public IQuadraticOperationsHandler quadraticOperations() {
+
         return new QuadraticOperationsHandler();
+    }
+
+    @Override
+    public IGeometricOperationsSingleVariableHandler sphereOperations() {
+        return new SphereHandler();
+    }
+
+    @Override
+    public IGeometricOperationsThreeVariableHandler pyramidOperations() {
+        return new PyramidHandler();
+    }
+
+    @Override
+    public IGeometricOperationsThreeVariableHandler cuboidOperations() {
+        return new CuboidHandler();
+    }
+
+    @Override
+    public IGeometricOperationsTwoVariableHandler rectangleOperations() {
+        return new RectangleHandler();
+    }
+
+    @Override
+    public IGeometricOperationsSingleVariableHandler squareOperations() {
+        return new SquareHandler();
     }
 }

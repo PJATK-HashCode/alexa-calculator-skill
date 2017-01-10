@@ -2,6 +2,7 @@ package speechlet.handler;
 
 import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
 import speechlet.handler.geometric.IGeometricOperationsThreeVariableHandler;
+import speechlet.handler.geometric.IGeometricOperationsTwoVariableHandler;
 import speechlet.handler.linear.IQuadraticOperationsHandler;
 import speechlet.handler.simple.ISimpleOperationsHandler;
 
@@ -18,4 +19,14 @@ public interface IOperationsHandler {
     IGeometricOperationsSingleVariableHandler cubeOperations();
 
     IGeometricOperationsThreeVariableHandler triangleOperations();
+
+    IGeometricOperationsSingleVariableHandler sphereOperations();
+
+    IGeometricOperationsThreeVariableHandler pyramidOperations();
+
+    IGeometricOperationsThreeVariableHandler cuboidOperations();
+
+    IGeometricOperationsTwoVariableHandler rectangleOperations();
+
+    IGeometricOperationsSingleVariableHandler squareOperations();
 }
