@@ -118,7 +118,7 @@ public class CalculatorSpeechlet implements Speechlet {
                 speech.setText(operationsHandler.cuboidOperations().operator(x, y, z, map.get("CuboidOp").getValue()));
             }
         }
-        else if ("PyramidHandler".equals(intentName)){
+        else if ("PyramidOperation".equals(intentName)){
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
@@ -126,20 +126,20 @@ public class CalculatorSpeechlet implements Speechlet {
                 speech.setText(operationsHandler.pyramidOperations().operator(x, y, z, map.get("PyramidOp").getValue()));
             }
             }
-        else if ("RectangleHandler".equals(intentName)){
+        else if ("RectangleOperation".equals(intentName)){
             if (map.containsKey("xValue") && map.containsKey("yValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
                 speech.setText(operationsHandler.rectangleOperations().operator(x, y, map.get("RectangleOp").getValue()));
             }
         }
-        else if ("SphereHandler".equals(intentName)){
+        else if ("SphereOperation".equals(intentName)){
             if (map.containsKey("xValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 speech.setText(operationsHandler.sphereOperations().operator(x, map.get("SphereOp").getValue()));
             }
         }
-        else if ("SquareHandler".equals(intentName)){
+        else if ("SquareOperation".equals(intentName)){
             if (map.containsKey("xValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 speech.setText(operationsHandler.squareOperations().operator(x, map.get("SquareOp").getValue()));
