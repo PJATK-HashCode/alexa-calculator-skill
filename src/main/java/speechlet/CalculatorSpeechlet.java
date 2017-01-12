@@ -11,11 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import speechlet.handler.IOperationsHandler;
 import speechlet.handler.OperationsHandler;
-import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
-import speechlet.handler.geometric.IGeometricOperationsThreeVariableHandler;
-import speechlet.handler.geometric.IGeometricOperationsTwoVariableHandler;
-import speechlet.handler.linear.IQuadraticOperationsHandler;
-import speechlet.handler.simple.ISimpleOperationsHandler;
 
 import java.util.Map;
 
@@ -25,7 +20,7 @@ import java.util.Map;
 public class CalculatorSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(CalculatorSpeechlet.class);
-    private IOperationsHandler operationsHandler;
+    private IOperationsHandler operationsHandler = new OperationsHandler();
 
 
     @Override
@@ -63,14 +58,6 @@ public class CalculatorSpeechlet implements Speechlet {
             return SpeechletResponse.newTellResponse(outputSpeech);
 
         } else if ("SimpleOperation".equals(intentName)) {
-
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public ISimpleOperationsHandler simpleOperations() {
-                    return super.simpleOperations();
-                }
-            };
-
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("operation")) {
 
                 int x = Integer.valueOf(map.get("xValue").getValue());
@@ -95,13 +82,6 @@ public class CalculatorSpeechlet implements Speechlet {
 
         } else if ("QuadraticEquation".equals(intentName)) {
 
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IQuadraticOperationsHandler quadraticOperations() {
-                    return super.quadraticOperations();
-                }
-            };
-
             if (map.containsKey("xValue") && map.containsKey("yValue")
                     && map.containsKey("zValue") && map.containsKey("kind")) {
 
@@ -112,37 +92,18 @@ public class CalculatorSpeechlet implements Speechlet {
                 speech.setText(operationsHandler.quadraticOperations().operator(a, b, c, map.get("kind").getValue()));
             }
         } else if ("CircleOperation".equals(intentName)) {
-
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IGeometricOperationsSingleVariableHandler circleOperations() {
-                    return super.circleOperations();
-                }
-            };
             if (map.containsKey("xValue")) {
                 int X = Integer.valueOf(map.get("xValue").getValue());
                 speech.setText(operationsHandler.circleOperations().operator(X, map.get("CircleOp").getValue()));
             }
         } else if ("CubeOperation".equals(intentName)) {
 
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IGeometricOperationsSingleVariableHandler cubeOperations() {
-                    return super.cubeOperations();
-                }
-            };
             if (map.containsKey("xValue")) {
                 int X = Integer.valueOf(map.get("xValue").getValue());
                 speech.setText(operationsHandler.cubeOperations().operator(X, map.get("CubeOp").getValue()));
             }
         } else if ("TriangleOperation".equals(intentName)) {
 
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IGeometricOperationsThreeVariableHandler triangleOperations() {
-                    return super.triangleOperations();
-                }
-            };
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
@@ -150,12 +111,6 @@ public class CalculatorSpeechlet implements Speechlet {
                 speech.setText(operationsHandler.triangleOperations().operator(x, y, z, map.get("TriangleOp").getValue()));
             }
         } else if ("CuboidOperation".equals(intentName)) {
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IGeometricOperationsThreeVariableHandler cuboidOperations() {
-                    return super.cuboidOperations();
-                }
-            };
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
@@ -164,12 +119,6 @@ public class CalculatorSpeechlet implements Speechlet {
             }
         }
         else if ("PyramidHandler".equals(intentName)){
-                operationsHandler = new OperationsHandler() {
-                    @Override
-                    public IGeometricOperationsThreeVariableHandler pyramidOperations() {
-                        return super.pyramidOperations();
-                    }
-                };
             if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
@@ -178,12 +127,6 @@ public class CalculatorSpeechlet implements Speechlet {
             }
             }
         else if ("RectangleHandler".equals(intentName)){
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IGeometricOperationsTwoVariableHandler rectangleOperations() {
-                    return super.rectangleOperations();
-                }
-            };
             if (map.containsKey("xValue") && map.containsKey("yValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 int y = Integer.valueOf(map.get("yValue").getValue());
@@ -191,24 +134,12 @@ public class CalculatorSpeechlet implements Speechlet {
             }
         }
         else if ("SphereHandler".equals(intentName)){
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IGeometricOperationsSingleVariableHandler sphereOperations() {
-                    return super.sphereOperations();
-                }
-            };
             if (map.containsKey("xValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 speech.setText(operationsHandler.sphereOperations().operator(x, map.get("SphereOp").getValue()));
             }
         }
         else if ("SquareHandler".equals(intentName)){
-            operationsHandler = new OperationsHandler() {
-                @Override
-                public IGeometricOperationsSingleVariableHandler squareOperations() {
-                    return super.squareOperations();
-                }
-            };
             if (map.containsKey("xValue")) {
                 int x = Integer.valueOf(map.get("xValue").getValue());
                 speech.setText(operationsHandler.squareOperations().operator(x, map.get("SquareOp").getValue()));

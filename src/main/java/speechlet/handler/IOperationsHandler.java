@@ -10,6 +10,7 @@ import speechlet.handler.simple.ISimpleOperationsHandler;
  * Created by Kuba on 2016-12-29.
  */
 public interface IOperationsHandler {
+
     ISimpleOperationsHandler simpleOperations();
 
     IGeometricOperationsSingleVariableHandler circleOperations();
@@ -29,4 +30,5 @@ public interface IOperationsHandler {
     IGeometricOperationsTwoVariableHandler rectangleOperations();
 
     IGeometricOperationsSingleVariableHandler squareOperations();
+
 }
