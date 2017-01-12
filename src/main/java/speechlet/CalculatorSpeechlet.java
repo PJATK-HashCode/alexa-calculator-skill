@@ -79,58 +79,28 @@ public class CalculatorSpeechlet implements Speechlet {
             }
 
         } else if ("QuadraticEquation".equals(intentName)) {
-
-            if (map.containsKey("xValue") && map.containsKey("yValue")
-                    && map.containsKey("zValue") && map.containsKey("kind")) {
-
-
                 speech.setText(operationsHandler.quadraticOperations().operator(x, y, z, map.get("kind").getValue()));
-            }
         } else if ("CircleOperation".equals(intentName)) {
-            if (map.containsKey("xValue")) {
                 speech.setText(operationsHandler.circleOperations().operator(x, map.get("CircleOp").getValue()));
-            }
         } else if ("CubeOperation".equals(intentName)) {
-
-            if (map.containsKey("xValue")) {
                 speech.setText(operationsHandler.cubeOperations().operator(x, map.get("CubeOp").getValue()));
-            }
         } else if ("TriangleOperation".equals(intentName)) {
-
-            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
                  speech.setText(operationsHandler.triangleOperations().operator(x, y, z, map.get("TriangleOp").getValue()));
-            }
         } else if ("CuboidOperation".equals(intentName)) {
-            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
-
                 speech.setText(operationsHandler.cuboidOperations().operator(x, y, z, map.get("CuboidOp").getValue()));
-            }
         }
         else if ("PyramidOperation".equals(intentName)){
-            if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue")) {
-
                 speech.setText(operationsHandler.pyramidOperations().operator(x, y, z, map.get("PyramidOp").getValue()));
-            }
-            }
+        }
         else if ("RectangleOperation".equals(intentName)){
-            if (map.containsKey("xValue") && map.containsKey("yValue")) {
-
                 speech.setText(operationsHandler.rectangleOperations().operator(x, y, map.get("RectangleOp").getValue()));
-            }
         }
         else if ("SphereOperation".equals(intentName)){
-            if (map.containsKey("xValue")) {
                 speech.setText(operationsHandler.sphereOperations().operator(x, map.get("SphereOp").getValue()));
-            }
         }
         else if ("SquareOperation".equals(intentName)){
-            if (map.containsKey("xValue")) {
                 speech.setText(operationsHandler.squareOperations().operator(x, map.get("SquareOp").getValue()));
-            }
-
         }
-
-
         else {
             throw new SpeechletException("Invalid intent");
         }
