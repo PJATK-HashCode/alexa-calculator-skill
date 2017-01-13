@@ -1,0 +1,148 @@
+{
+    "intents": [{
+        "intent": "SimpleOperation",
+        "slots": [{
+                "name": "xValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "yValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "operation",
+                "type": "SIMPLE_OPERATIONS"
+            }
+
+        ]
+    }, {
+        "intent": "LinearEquation",
+        "slots": [{
+            "name": "xValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "yValue",
+            "type": "AMAZON.NUMBER"
+        }]
+    }, {
+        "intent": "QuadraticEquation",
+        "slots": [{
+            "name": "xValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "yValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "zValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "kind",
+            "type": "QUADRATIC_EQUATION"
+        }]
+    }, {
+        "intent": "CircleOperation",
+        "slots": [{
+                "name": "xValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "CircleOp",
+                "type": "CIRCLE_OPERATION"
+            }
+
+        ]
+    }, {
+        "intent": "CubeOperation",
+        "slots": [{
+            "name": "xValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "CubeOp",
+            "type": "CUBE_OPERATION"
+        }]
+    }, {
+        "intent": "TriangleOperation",
+        "slots": [{
+            "name": "xValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "yValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "zValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "TriangleOp",
+            "type": "TRIANGLE_OPERATION"
+        }]
+    }, {
+        "intent": "CuboidOperation",
+        "slots": [{
+                "name": "xValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "yValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "zValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "CuboidOp",
+                "type": "CUBOID_OPERATION"
+            }
+
+        ]
+    }, {
+        "intent": "SphereOperation",
+        "slots": [{
+            "name": "xValue",
+            "type": "AMAZON.NUMBER"
+        }, {
+            "name": "SphereOp",
+            "type": "SPHERE_OPERATION"
+        }]
+    }, {
+        "intent": "PyramidOperation",
+        "slots": [{
+                "name": "xValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "yValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "zValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "PyramidOp",
+                "type": "PYRAMID_OPERATION"
+            }
+
+        ]
+    }, {
+        "intent": "RectangleOperation",
+        "slots": [{
+                "name": "xValue",
+                "type": "AMAZON.NUMBER"
+            }, {
+                "name": "yValue",
+                "type": "AMAZON.NUMBER"
+            },
+
+            {
+                "name": "RectangleOp",
+                "type": "RECTANGLE_OPERATION"
+            }
+
+        ]
+    }, {
+        "intent": "SquareOperation",
+        "slots": [{
+                "name": "xValue",
+                "type": "AMAZON.NUMBER"
+            },
+
+            {
+                "name": "SquareOp",
+                "type": "SQUARE_OPERATION"
+            }
+
+        ]
+    }]
+}

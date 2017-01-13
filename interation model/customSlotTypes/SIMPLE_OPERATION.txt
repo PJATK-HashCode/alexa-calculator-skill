@@ -1,0 +1,5 @@
+add
+sublimate
+multiply
+divide
+exponentation
