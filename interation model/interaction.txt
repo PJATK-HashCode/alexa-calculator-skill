@@ -1,4 +1,4 @@
-SimpleOperation do {xValue} {operation} by {yValue}
+SimpleOperation do simple operation {operation} to {xValue} and {yValue}
 LinearEquation calculate linear equation x value where a equals {xValue} and b equals {yValue}
 QuadraticEquation calculate quadratic equation {kind} where a equals {xValue} b equals {yValue} and c equals {zValue}
 CircleOperation calculate circle {CircleOp} where radius of circle equals {xValue}
