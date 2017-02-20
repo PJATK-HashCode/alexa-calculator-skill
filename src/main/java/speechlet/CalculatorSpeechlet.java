@@ -54,71 +54,73 @@ public class CalculatorSpeechlet implements Speechlet {
         final Map<String, Slot> map = intent.getSlots();
         String intentName = intent.getName();
 
-
         if (map.containsKey("xValue")) {
             x = Integer.valueOf(map.get("xValue").getValue());
         }
         if (map.containsKey("yValue")) {
             y = Integer.valueOf(map.get("yValue").getValue());
-
         }
         if (map.containsKey("zValue")) {
             z = Integer.valueOf(map.get("zValue").getValue());
-
         }
 
+        switch (intentName) {
 
-        if ("AMAZON.StopIntent".equals(intentName)) {
-            speech.setText("Goodbye");
+            case "AMAZON.StopIntent": {
+                speech.setText("Goodbye");
+                break;
+            }
+            case "SimpleOperation": {
+                speech.setText(operationsHandler.simpleOperations().operator(x, y, map.get("operation").getValue()));
+                break;
+            }
+            case "LinearEquation": {
+                LinearEquations linearEquations = new LinearEquations();
+                linearEquations.setA(x);
+                linearEquations.setB(y);
+                speech.setText(String.valueOf(linearEquations.calculateX()));
+                break;
+            }
+            case "QuadraticEquation": {
+                speech.setText(operationsHandler.quadraticOperations().operator(x, y, z, map.get("kind").getValue()));
+                break;
+            }
 
-        } else if ("SimpleOperation".equals(intentName)) {
-            speech.setText(operationsHandler.simpleOperations()
-                    .operator(x, y, map.get("operation").getValue()));
+            case "CirceOperation": {
+                speech.setText(operationsHandler.circleOperations().operator(x, map.get("CircleOp").getValue()));
+                break;
+            }
+            case "CubeOperation": {
+                speech.setText(operationsHandler.cubeOperations().operator(x, map.get("CubeOp").getValue()));
+                break;
+            }
+            case "TriangleOperation": {
+                speech.setText(operationsHandler.triangleOperations().operator(x, y, z, map.get("TriangleOp").getValue()));
+                break;
+            }
+            case "CuboidOperation": {
+                speech.setText(operationsHandler.cuboidOperations().operator(x, y, z, map.get("CuboidOp").getValue()));
+                break;
+            }
+            case "PyramidOperation": {
+                speech.setText(operationsHandler.pyramidOperations().operator(x, y, z, map.get("PyramidOp").getValue()));
+                break;
+            }
+            case "RectangleOperation": {
+                speech.setText(operationsHandler.rectangleOperations().operator(x, y, map.get("RectangleOp").getValue()));
+                break;
+            }
+            case "SphereOperation": {
+                speech.setText(operationsHandler.sphereOperations().operator(x, map.get("SphereOp").getValue()));
+                break;
+            }
 
-        } else if ("LinearEquation".equals(intentName)) {
-            LinearEquations linearEquations = new LinearEquations();
-            linearEquations.setA(x);
-            linearEquations.setB(y);
-            speech.setText(String.valueOf(linearEquations.calculateX()));
-
-        } else if ("QuadraticEquation".equals(intentName)) {
-            speech.setText(operationsHandler.quadraticOperations()
-                    .operator(x, y, z, map.get("kind").getValue()));
-
-        } else if ("CircleOperation".equals(intentName)) {
-            speech.setText(operationsHandler.circleOperations()
-                    .operator(x, map.get("CircleOp").getValue()));
-
-        } else if ("CubeOperation".equals(intentName)) {
-            speech.setText(operationsHandler.cubeOperations()
-                    .operator(x, map.get("CubeOp").getValue()));
-
-        } else if ("TriangleOperation".equals(intentName)) {
-            speech.setText(operationsHandler.triangleOperations()
-                    .operator(x, y, z, map.get("TriangleOp").getValue()));
-
-        } else if ("CuboidOperation".equals(intentName)) {
-            speech.setText(operationsHandler.cuboidOperations()
-                    .operator(x, y, z, map.get("CuboidOp").getValue()));
-
-        } else if ("PyramidOperation".equals(intentName)) {
-            speech.setText(operationsHandler.pyramidOperations()
-                    .operator(x, y, z, map.get("PyramidOp").getValue()));
-
-        } else if ("RectangleOperation".equals(intentName)) {
-            speech.setText(operationsHandler.rectangleOperations()
-                    .operator(x, y, map.get("RectangleOp").getValue()));
-
-        } else if ("SphereOperation".equals(intentName)) {
-            speech.setText(operationsHandler.sphereOperations()
-                    .operator(x, map.get("SphereOp").getValue()));
-
-        } else if ("SquareOperation".equals(intentName)) {
-            speech.setText(operationsHandler.squareOperations()
-                    .operator(x, map.get("SquareOp").getValue()));
-
-        } else {
-            throw new SpeechletException("Invalid intent");
+            case "SquareOperation": {
+                speech.setText(operationsHandler.sphereOperations().operator(x, map.get("SphereOp").getValue()));
+                break;
+            }
+            default:
+                throw new SpeechletException("Invalid intent");
         }
 
         card.setTitle(intentName);
@@ -139,7 +141,7 @@ public class CalculatorSpeechlet implements Speechlet {
 
     private SpeechletResponse getWelcomeResponse() {
 
-        String speechText = "Welcome to the Calculator Skill, made by science club HashCode" +
+        String speechText = "Welcome in Calculator Skill, made by science club HashCode" +
                 "at Gdansk branch of Polish-Japanese Academy Of Technology in Warsaw.";
 
         SimpleCard card = new SimpleCard();
@@ -156,7 +158,6 @@ public class CalculatorSpeechlet implements Speechlet {
 
         return response;
     }
-
 
 }
 
