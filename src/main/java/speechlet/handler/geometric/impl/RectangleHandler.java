@@ -3,6 +3,7 @@ package speechlet.handler.geometric.impl;
 import domain.operations.geometric.Rectangle;
 import speechlet.handler.geometric.IGeometricOperationsTwoVariableHandler;
 
+import static speechlet.handler.OperationsHandler.RESULT_OF_MATH_OPERATION;
 import static speechlet.handler.OperationsHandler.WRONG_REQUEST;
 
 /**
@@ -13,10 +14,10 @@ public class RectangleHandler implements IGeometricOperationsTwoVariableHandler 
     public String operator(int X, int Y, String operator) {
         Rectangle rectangle = new Rectangle(X,Y);
         if ("field".equals(operator)){
-            return String.valueOf(rectangle.fieldCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(rectangle.fieldCalc());
         }
         else if ("circuit".equals(operator)){
-            return String.valueOf(rectangle.circuitCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(rectangle.circuitCalc());
         }
         return WRONG_REQUEST;
     }

@@ -3,6 +3,7 @@ package speechlet.handler.geometric.impl;
 import domain.operations.geometric.Circle;
 import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
 
+import static speechlet.handler.OperationsHandler.RESULT_OF_MATH_OPERATION;
 import static speechlet.handler.OperationsHandler.WRONG_REQUEST;
 
 /**
@@ -14,9 +15,9 @@ public class CircleHandler implements IGeometricOperationsSingleVariableHandler 
         Circle circle = new Circle(X);
 
         if ("field".equals(operator)) {
-            return String.valueOf(circle.fieldCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(circle.fieldCalc());
         } else if ("circuit".equals(operator)) {
-            return String.valueOf(circle.circuitCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(circle.circuitCalc());
         }
         return WRONG_REQUEST;
     }

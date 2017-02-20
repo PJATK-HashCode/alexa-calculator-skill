@@ -15,6 +15,7 @@ import speechlet.handler.simple.impl.SimpleOperationsHandler;
 public class OperationsHandler implements IOperationsHandler {
 
     public final static String WRONG_REQUEST = "Sorry, I don't understand your request. Please repeat it.";
+    public final static String RESULT_OF_MATH_OPERATION = "The result of your math operation equals ";
 
     public ISimpleOperationsHandler simpleOperations() {
         return new SimpleOperationsHandler();
@@ -35,8 +36,8 @@ public class OperationsHandler implements IOperationsHandler {
         return new TriangleHandler();
     }
 
+    @Override
     public IQuadraticOperationsHandler quadraticOperations() {
-
         return new QuadraticOperationsHandler();
     }
 

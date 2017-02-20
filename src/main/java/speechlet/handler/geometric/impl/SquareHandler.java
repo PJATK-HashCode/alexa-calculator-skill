@@ -3,6 +3,7 @@ package speechlet.handler.geometric.impl;
 import domain.operations.geometric.Square;
 import speechlet.handler.geometric.IGeometricOperationsSingleVariableHandler;
 
+import static speechlet.handler.OperationsHandler.RESULT_OF_MATH_OPERATION;
 import static speechlet.handler.OperationsHandler.WRONG_REQUEST;
 
 /**
@@ -13,10 +14,10 @@ public class SquareHandler implements IGeometricOperationsSingleVariableHandler 
     public String operator(int X, String operator) {
         Square square = new Square(X);
         if ("field".equals(operator)){
-            return String.valueOf(square.fieldCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(square.fieldCalc());
         }
         else if ("circuit".equals(operator)){
-            return String.valueOf(square.circuitCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(square.circuitCalc());
         }
         return WRONG_REQUEST;
     }

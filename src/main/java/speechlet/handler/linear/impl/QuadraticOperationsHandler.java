@@ -3,6 +3,7 @@ package speechlet.handler.linear.impl;
 import domain.operations.linear.QuadraticEquations;
 import speechlet.handler.linear.IQuadraticOperationsHandler;
 
+import static speechlet.handler.OperationsHandler.RESULT_OF_MATH_OPERATION;
 import static speechlet.handler.OperationsHandler.WRONG_REQUEST;
 
 /**
@@ -19,9 +20,10 @@ public class QuadraticOperationsHandler implements IQuadraticOperationsHandler {
         quadraticEquations.setC(number3);
 
         if ("delta".equals(operator)) {
-            return String.valueOf(quadraticEquations.calculateDelta());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(quadraticEquations.calculateDelta());
+
         } else if ("zeroPoints".equals(operator)) {
-            return quadraticEquations.results();
+            return RESULT_OF_MATH_OPERATION + quadraticEquations.results();
         }
         return WRONG_REQUEST;
 

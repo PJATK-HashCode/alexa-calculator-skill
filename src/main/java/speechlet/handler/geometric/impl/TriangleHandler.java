@@ -3,6 +3,7 @@ package speechlet.handler.geometric.impl;
 import domain.operations.geometric.Triangle;
 import speechlet.handler.geometric.IGeometricOperationsThreeVariableHandler;
 
+import static speechlet.handler.OperationsHandler.RESULT_OF_MATH_OPERATION;
 import static speechlet.handler.OperationsHandler.WRONG_REQUEST;
 
 /**
@@ -13,9 +14,9 @@ public class TriangleHandler implements IGeometricOperationsThreeVariableHandler
     public String operator(int X, int Y, int Z, String operator) {
         Triangle triangle = new Triangle(X, Y, Z);
         if ("field".equals(operator)) {
-            return String.valueOf(triangle.fieldCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(triangle.fieldCalc());
         } else if ("circuit".equals(operator)) {
-            return String.valueOf(triangle.circuitCalc());
+            return RESULT_OF_MATH_OPERATION + String.valueOf(triangle.circuitCalc());
         }
         return WRONG_REQUEST;
     }
