@@ -25,6 +25,7 @@ public class OperationsHandler {
 
 
     public String singleVariableHandler(String intent, int X, Map<String, Slot> map) {
+
         try {
             switch (intent) {
                 case "CircleOperation": {
@@ -43,46 +44,56 @@ public class OperationsHandler {
                     return ("Invalid intent");
             }
         } catch (NullPointerException ex) {
-            throw new NullPointerException("Invalid intent");
+            throw new NullPointerException("Invalid key for map");
         }
     }
 
     public String TwoVariableHandler(String intent, int X, int Y, Map<String, Slot> map) {
-        switch (intent) {
-            case "RectangleOperation": {
-                return new RectangleHandler().operator(X, Y, map.get("RectangleOp").getValue());
-            }
-            case "SimpleOperation": {
-                return new SimpleOperationsHandler().operator(X, Y, map.get("operation").getValue());
-            }
-            case "LinearEquation": {
-                LinearEquations linearEquations = new LinearEquations();
-                linearEquations.setA(X);
-                linearEquations.setB(Y);
-                return String.valueOf(linearEquations.calculateX());
-            }
-            default:
-                return "Invalid intent";
 
+        try {
+            switch (intent) {
+                case "RectangleOperation": {
+                    return new RectangleHandler().operator(X, Y, map.get("RectangleOp").getValue());
+                }
+                case "SimpleOperation": {
+                    return new SimpleOperationsHandler().operator(X, Y, map.get("operation").getValue());
+                }
+                case "LinearEquation": {
+                    LinearEquations linearEquations = new LinearEquations();
+                    linearEquations.setA(X);
+                    linearEquations.setB(Y);
+                    return String.valueOf(linearEquations.calculateX());
+                }
+                default:
+                    return "Invalid intent";
+
+            }
+        } catch (NullPointerException ex) {
+            throw new NullPointerException("Invalid key for map");
         }
     }
 
     public String ThreeVariableHandler(String intent, int X, int Y, int Z, Map<String, Slot> map) {
-        switch (intent) {
-            case "triangleOperation": {
-                return new TriangleHandler().operator(X, Y, Z, map.get("TriangleOp").getValue());
+
+        try {
+            switch (intent) {
+                case "triangleOperation": {
+                    return new TriangleHandler().operator(X, Y, Z, map.get("TriangleOp").getValue());
+                }
+                case "pyramidOperation": {
+                    return new PyramidHandler().operator(X, Y, Z, map.get("PyramidOp").getValue());
+                }
+                case "CuboidOperation": {
+                    return new CuboidHandler().operator(X, Y, Z, map.get("CuboidOp").getValue());
+                }
+                case "QuadraticEquation": {
+                    return new QuadraticOperationsHandler().operator(X, Y, Z, map.get("QuadraticOp").getValue());
+                }
+                default:
+                    return "Invalid intent";
             }
-            case "pyramidOperation": {
-                return new PyramidHandler().operator(X, Y, Z, map.get("PyramidOp").getValue());
-            }
-            case "CuboidOperation": {
-                return new CuboidHandler().operator(X, Y, Z, map.get("CuboidOp").getValue());
-            }
-            case "QuadraticEquation": {
-                return new QuadraticOperationsHandler().operator(X, Y, Z, map.get("QuadraticOp").getValue());
-            }
-            default:
-                return "Invalid intent";
+        } catch (NullPointerException ex) {
+            throw new NullPointerException("Invalid key for map");
         }
     }
 
