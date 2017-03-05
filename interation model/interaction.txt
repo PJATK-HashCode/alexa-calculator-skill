@@ -1,11 +1,11 @@
 SimpleOperation do simple operation {operation} to {xValue} and {yValue}
-LinearEquation calculate linear equation x value where a equals {xValue} and b equals {yValue}
-QuadraticEquation calculate quadratic equation {operation} where a equals {xValue} b equals {yValue} and c equals {zValue}
-CircleOperation calculate circle {operation} where radius of circle equals {xValue}
-CubeOperation calculate cube {operation} where side equals {xValue}
-TriangleOperation calculate triangle {operation} where first side equals {xValue} second equals {yValue} and third equals {zValue}
-CuboidOperation calculate cuboid {operation} where firt side equals {xValue} second side equals {yValue} and high equals {zValue}
-SphereOperation calculate sphere {operation} where radius equals {xValue}
-PyramidOperation calculate pyramid {operation} where radius equals {xValue} high equals {yValue} and l equals {zValue}
-RectangleOperation calculate rectangle {operation} where first side equals {xValue} and second equals {yValue}
-SquareOperation calculate square {operation} where side equals {xValue}
+LinearEquation calculate linear equation where a equals {xValue} and b equals {yValue}
+QuadraticEquation calculate quadratic equation {kind} where a equals {xValue} b equals {yValue} and c equals {zValue}
+CircleOperation calculate circle {CircleOp} where radius of circle equals {xValue}
+CubeOperation calculate cube {CubeOp} where side equals {xValue}
+TriangleOperation calculate triangle {TriangleOp} where first side equals {xValue} second equals {yValue} and third equals {zValue}
+CuboidOperation calculate cuboid {CuboidOp} where first side equals {xValue} second side equals {yValue} and high equals {zValue}
+SphereOperation calculate sphere {SphereOp} where radius equals {xValue}
+PyramidOperation calculate pyramid {PyramidOp} where radius equals {xValue} high equals {yValue} and l equals {zValue}
+RectangleOperation calculate rectangle {RectangleOp} where first side equals {xValue} and second equals {yValue}
+SquareOperation calculate square {SquareOp} where side equals {xValue}

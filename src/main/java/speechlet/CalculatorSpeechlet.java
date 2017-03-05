@@ -49,6 +49,7 @@ public class CalculatorSpeechlet implements Speechlet {
         Intent intent = intentRequest.getIntent();
         final Map<String, Slot> map = intent.getSlots();
         String intentName = intent.getName();
+        String operation;
 
         if (map.containsKey("xValue")) {
             x = Integer.valueOf(map.get("xValue").getValue());
@@ -62,26 +63,20 @@ public class CalculatorSpeechlet implements Speechlet {
 
 
         if (map.containsKey("xValue") && !map.containsKey("yValue")
-                && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")){
-            speech.setText(operationsHandler.singleVariableHandler(intentName,x,map.get("operation").getValue()));
-        }
-        else if (map.containsKey("xValue") && map.containsKey("yValue")
-                && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")){
-            speech.setText(operationsHandler.TwoVariableHandler(intentName,x,y,map.get("operation").getValue()));
-        }
-        else if (map.containsKey("xValue") && map.containsKey("yValue")
+                && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")) {
+            speech.setText(operationsHandler.singleVariableHandler(intentName, x, map));
+        } else if (map.containsKey("xValue") && map.containsKey("yValue")
+                && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")
+                ) {
+            speech.setText(operationsHandler.TwoVariableHandler(intentName, x, y, map));
+        } else if (map.containsKey("xValue") && map.containsKey("yValue")
                 && map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")) {
-            speech.setText(operationsHandler.ThreeVariableHandler(intentName,x,y,z,map.get("operation").getValue()));
-        }
-        else if (intentName.equals("AMAZON.StopIntent")){
+            speech.setText(operationsHandler.ThreeVariableHandler(intentName, x, y, z, map));
+        } else if (intentName.equals("AMAZON.StopIntent")) {
             speech.setText("Goodbye");
-        }
-        else
-        {
+        } else {
             throw new SpeechletException("Invalid intent");
         }
-
-
 
 
         card.setTitle(intentName);
