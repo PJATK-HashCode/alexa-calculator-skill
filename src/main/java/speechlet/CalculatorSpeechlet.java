@@ -61,13 +61,16 @@ public class CalculatorSpeechlet implements Speechlet {
         }
 
 
-        if (map.containsKey("xValue") && !map.containsKey("yValue") && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")){
+        if (map.containsKey("xValue") && !map.containsKey("yValue")
+                && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")){
             speech.setText(operationsHandler.singleVariableHandler(intentName,x,map.get("operation").getValue()));
         }
-        else if (map.containsKey("xValue") && map.containsKey("yValue") && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")){
+        else if (map.containsKey("xValue") && map.containsKey("yValue")
+                && !map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")){
             speech.setText(operationsHandler.TwoVariableHandler(intentName,x,y,map.get("operation").getValue()));
         }
-        else if (map.containsKey("xValue") && map.containsKey("yValue") && map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")) {
+        else if (map.containsKey("xValue") && map.containsKey("yValue")
+                && map.containsKey("zValue") && !intentName.equals("AMAZON.StopIntent")) {
             speech.setText(operationsHandler.ThreeVariableHandler(intentName,x,y,z,map.get("operation").getValue()));
         }
         else if (intentName.equals("AMAZON.StopIntent")){
@@ -85,7 +88,6 @@ public class CalculatorSpeechlet implements Speechlet {
         card.setContent(speech.getText());
         response.setOutputSpeech(speech);
         response.setCard(card);
-        response.setShouldEndSession(false);
 
         return response;
     }
@@ -111,13 +113,8 @@ public class CalculatorSpeechlet implements Speechlet {
         SpeechletResponse response = new SpeechletResponse();
         response.setCard(card);
         response.setOutputSpeech(speech);
-        response.setShouldEndSession(false);
 
         return response;
     }
 
 }
-
-
-
-

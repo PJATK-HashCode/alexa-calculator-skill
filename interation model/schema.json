@@ -34,7 +34,7 @@
             "name": "zValue",
             "type": "AMAZON.NUMBER"
         }, {
-            "name": "kind",
+            "name": "operation",
             "type": "QUADRATIC_EQUATION"
         }]
     }, {
@@ -43,7 +43,7 @@
                 "name": "xValue",
                 "type": "AMAZON.NUMBER"
             }, {
-                "name": "CircleOp",
+                "name": "operation",
                 "type": "CIRCLE_OPERATION"
             }
 
@@ -69,7 +69,7 @@
             "name": "zValue",
             "type": "AMAZON.NUMBER"
         }, {
-            "name": "TriangleOp",
+            "name": "operation",
             "type": "TRIANGLE_OPERATION"
         }]
     }, {
@@ -84,7 +84,7 @@
                 "name": "zValue",
                 "type": "AMAZON.NUMBER"
             }, {
-                "name": "CuboidOp",
+                "name": "operation",
                 "type": "CUBOID_OPERATION"
             }
 
@@ -95,7 +95,7 @@
             "name": "xValue",
             "type": "AMAZON.NUMBER"
         }, {
-            "name": "SphereOp",
+            "name": "operation",
             "type": "SPHERE_OPERATION"
         }]
     }, {
@@ -110,7 +110,7 @@
                 "name": "zValue",
                 "type": "AMAZON.NUMBER"
             }, {
-                "name": "PyramidOp",
+                "name": "operation",
                 "type": "PYRAMID_OPERATION"
             }
 
@@ -126,7 +126,7 @@
             },
 
             {
-                "name": "RectangleOp",
+                "name": "operation",
                 "type": "RECTANGLE_OPERATION"
             }
 
